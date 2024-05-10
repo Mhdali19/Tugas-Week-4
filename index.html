@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript dan version control</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        //TUGAS 1
+        let ArrayAcak = []; //Bikin Array kosong 
+
+        for (let i = 0; i < 100; i++) { // buat perulangan ni;ai yang kurang dari 100
+            let NilaiAcak = Math.floor(Math.random() * 50) + 1; // hasilkan nilai random lalu kalikan 50 bulatkan dengan mathfloor dan + 1 agar rentang dari 1 - 50 
+            ArrayAcak.push(NilaiAcak); //Tambahkan nilaiacak ke arrayacak
+        }
+
+        console.log(ArrayAcak); //tampilakan outputnya didocument 
+
+        //TUGAS 2
+        let genap = []
+        let ganjil = []
+
+        for (let i = 0; i < ArrayAcak.length; i++) {
+            if (i % 2 === 0) {
+                genap.push(ArrayAcak[i]);
+            } else {
+                ganjil.push(ArrayAcak[i]);
+            }
+        }
+
+        console.log('Index Array genap = ' + genap);
+        console.log('Index Array ganjil = ' + ganjil);
+
+        // Function MIN 
+        // TUGAS 3 
+        function FMinimal(array) {
+            let min = array[0];
+            for (let nilai of array) {
+                if (nilai < min) {
+                    min = nilai;
+                }
+            }
+            return min;
+        }
+
+        // Function MAX
+        function FMaximal(array) {
+            let max = array[0];
+            for (let nilai of array) {
+                if (nilai > max) {
+                    max = nilai;
+                }
+            }
+            return max;
+        }
+
+        // Function RataRata
+        function FRataRata(array, index = 0, total = 0) {
+            if (index === array.length) {
+                if (array.length === 0) {
+                    return 0;
+                } else {
+                    return total / array.length;
+                }
+            } else {
+                total += array[index];
+                return FRataRata(array, index + 1, total);
+            }
+        }
+        // Function Total
+        function FTotal(array) {
+            let total = 0;
+            for (let nilai of array) {
+                total += nilai;
+            }
+            return total;
+        }
+
+
+        let genapMIN = FMinimal(genap);
+        let genapMAX = FMaximal(genap);
+        let genapTotal = FTotal(genap);
+        let genapRR = FRataRata(genap);
+
+        let ganjilMIN = FMinimal(ganjil);
+        let ganjilMAX = FMaximal(ganjil);
+        let ganjilTotal = FTotal(ganjil);
+        let ganjilRR = FRataRata(ganjil);
+
+
+        console.log("Genap Minimal = " + genapMIN);
+        console.log("Genap Maximal = " + genapMAX);
+        console.log("Genap Total = " + genapTotal);
+        console.log("Genap Rata rata = " + genapRR);
+
+        console.log("Ganjil Minimal = " + ganjilMIN);
+        console.log("Ganjil Maximal = " + ganjilMAX);
+        console.log("Ganjil Total = " + ganjilTotal);
+        console.log("Ganjil Rata rata = " + ganjilRR);
+
+
+
+        //TUGAS TERAKHIR (4) 
+        if (genapMIN > ganjilMIN) {
+            console.log("Min lebih besar array genap");
+        } else {
+            console.log("Min lebih besar array ganjil");
+        }
+
+        if (ganjilMAX > genapMAX) {
+            console.log("Max lebih besar array ganjil");
+        } else {
+            console.log("Max lebih besar array genap");
+        }
+
+        if (genapTotal === ganjilTotal) {
+            console.log("Total memiliki nilai sama antara array genap dan ganjil");
+        } else {
+            console.log("Total memiliki nilai berbeda antara array genap dan ganjil");
+        }
+
+        if (ganjilRR > genapRR) {
+            console.log("Rata rata lebih besar array ganjil");
+        } else {
+            console.log("Rata rata lebih besar array genap");
+        }
+
+    </script>
+</body>
+
+</html>
